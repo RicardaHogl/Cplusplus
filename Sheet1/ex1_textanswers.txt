@@ -1,0 +1,26 @@
+EX 1.1 (Error Messages)
+
+a) Remove the semicolon after int somenumber.
+Error message:
+
+b) Remove the closing quotation mark from Enter a number:.
+Error message:
+
+
+c) Comment out the line using namespace std;.
+Error message:
+
+d) Add the modier const before int someNumber (and thus declare a constant).
+Error message:
+
+e) Change iostream to iostream.h.
+Error message:
+
+Based on your observations, decide which error to look atfirst 
+if there are multiple errors!
+Answer:
+
+
+EX 1.2 (Type conversion)
+Where do you see a possible risk?
+Answer:
