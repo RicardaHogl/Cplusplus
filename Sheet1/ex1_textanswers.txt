@@ -56,7 +56,7 @@ Error message:
 C:\Users\Ricarda\source\repos\Cplusplus\Sheet1\ConsoleApplication1\ConsoleApplication1\ConsoleApplication1.cpp(4,10): fatal error C1083: Datei (Include) kann nicht geöffnet werden: "iostream.h": No such file or directory
 
 
-Based on your observations, decide which error to look at first 
+Based on your observations, decide which error to look at first
 if there are multiple errors!
 Answer:
 After a fatal error, the other errors won't be detected before we fix the cause for the fatal error, so we naturally have to look at the fatal errors before we can detect the other errors.
@@ -72,5 +72,34 @@ b = d; //because we can store more data in a double than in a char and so data w
 a = i; //an int can store more data than a char
 i = d; //because we lose the information after the comma, and even the rounded number might be too big to fit in an int (due to the floating point format).
 
-Ex 1.4
-ggT(65,25)=ggT(40,25)=ggT(15,25)=ggT(15,10)=ggT(5,10)=ggT(5,5)=5
+
+
+Ex 1.4 (Running through an algorithm)
+a = 65, b = 25, Compute ggT(65,25)
+
+Answer:
+Call ggT(65,25)
+Check 65 == 25: false
+Check 65 > 25: true
+Compute 65-25 = 40
+Call ggT(40, 25)
+Check 40 == 25: false
+Check 40 > 25: true
+Compute 40-25 = 15
+Call ggT(15,25)
+Check 15 == 25: false
+Check 15 > 25: false
+Check 15 < 25: true
+Compute 25-15 = 10
+Call ggT(15,10)
+Check 15 == 10: false
+Check 15 > 10: true
+Compute 15-10 = 5
+Call ggT(5,10)
+Check 5 == 10: false
+Check 5 > 10: false
+Check 5 < 10: true
+Compute 10-5 = 5
+Call ggT(5,5)
+Check 5 == 5: true
+Return 5
