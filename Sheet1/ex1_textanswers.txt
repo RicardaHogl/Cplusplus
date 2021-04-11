@@ -27,6 +27,8 @@ Error message:
 
 C:\Users\Ricarda\source\repos\Cplusplus\Sheet1\ConsoleApplication1\ConsoleApplication1\ConsoleApplication1.cpp(8,22): error C2734: "someNumber": "const"-Objekt muss initialisiert werden, wenn es nicht extern ist
 C:\Users\Ricarda\source\repos\Cplusplus\Sheet1\ConsoleApplication1\ConsoleApplication1\ConsoleApplication1.cpp(10,19): error C2678: Binärer Operator ">>": Es konnte kein Operator gefunden werden, der einen linksseitigen Operanden vom Typ "std::istream" akzeptiert (oder keine geeignete Konvertierung möglich)
+
+-------ab hier alles messages----
 C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29910\include\istream(301,39): message : kann "std::basic_istream<char,std::char_traits<char>> &std::basic_istream<char,std::char_traits<char>>::operator >>(std::basic_streambuf<char,std::char_traits<char>> *)" sein
 C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29910\include\istream(297,39): message : oder "std::basic_istream<char,std::char_traits<char>> &std::basic_istream<char,std::char_traits<char>>::operator >>(void *&)"
 C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29910\include\istream(293,39): message : oder "std::basic_istream<char,std::char_traits<char>> &std::basic_istream<char,std::char_traits<char>>::operator >>(long double &)"
@@ -54,18 +56,19 @@ Error message:
 C:\Users\Ricarda\source\repos\Cplusplus\Sheet1\ConsoleApplication1\ConsoleApplication1\ConsoleApplication1.cpp(4,10): fatal error C1083: Datei (Include) kann nicht geöffnet werden: "iostream.h": No such file or directory
 
 
-Based on your observations, decide which error to look atfirst 
+Based on your observations, decide which error to look at first 
 if there are multiple errors!
 Answer:
+After a fatal error, the other errors won't be detected before we fix the cause for the fatal error, so we naturally have to look at the fatal errors before we can detect the other errors.
+Otherwise, fixing the errors starting from the top (in terms of code execution) will resolve some of the error messages in lower lines automatically when fixing an error in the line above.
 
-1>C:\Users\Ricarda\source\repos\Cplusplus\Sheet1\ConsoleApplication1\ConsoleApplication1\ConsoleApplication1.cpp(9,2): error C2146: Syntaxfehler: Fehlendes ";" vor Bezeichner "cout"
-1>C:\Users\Ricarda\source\repos\Cplusplus\Sheet1\ConsoleApplication1\ConsoleApplication1\ConsoleApplication1.cpp(8,10): error C2001: Zeilenvorschub in Konstante.
-1>C:\Users\Ricarda\source\repos\Cplusplus\Sheet1\ConsoleApplication1\ConsoleApplication1\ConsoleApplication1.cpp(10,2): error C2146: Syntaxfehler: Fehlendes ";" vor Bezeichner "cin"
-
-
-
-Multiple errors for one problem are most likely 
 
 EX 1.2 (Type conversion)
 Where do you see a possible risk?
 Answer:
+i = l+90; //because we can store longer numbers in a long than in int
+//f = s; // because we can't just interpret a short as floating point number without explicit conversion
+b = d; //because we can store more data in a double than in a char and so data will be lost (even with conversion)
+a = i; //an int can store more data than a char
+i = d; //because we lose the information after the comma, and even the rounded number might be too big to fit in an int (due to the floating point format).
+
