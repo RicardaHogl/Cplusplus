@@ -72,3 +72,5 @@ b = d; //because we can store more data in a double than in a char and so data w
 a = i; //an int can store more data than a char
 i = d; //because we lose the information after the comma, and even the rounded number might be too big to fit in an int (due to the floating point format).
 
+Ex 1.4
+ggT(65,25)=ggT(40,25)=ggT(15,25)=ggT(15,10)=ggT(5,10)=ggT(5,5)=5
