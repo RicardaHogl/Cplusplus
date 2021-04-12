@@ -6,7 +6,7 @@ using namespace std;
 
 int main()
 {
-  cout << "Welcome to the midnight formula solver"<<endl;
+  cout << "Welcome to the midnight formula solver\n";
   double a,b,c;
   cout << " Enter a number a:\n";
   cin >> a;
@@ -14,7 +14,7 @@ int main()
   cin >> b;
   cout << " Enter a number c:\n";
   cin >> c;
-  cout << "Trying to find solutions for the equation" << a << "x^2+" << b << "x+" << c << "=0" << endl;
+  cout << "Trying to find solutions for the equation" << a << "x^2+" << b << "x+" << c << "=0\n";
   if (a == 0) {
     if (b == 0) {
       if (c == 0) {
