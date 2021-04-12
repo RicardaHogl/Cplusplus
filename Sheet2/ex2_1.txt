@@ -1,0 +1,15 @@
+2.1
+10 Schritte zum Kaffee
+1. Schranktür öffnen
+2. Tasse rausholen
+3. Tasse unter Automaten stellen
+4. Überprüfen, ob noch Wasser in der Maschine ist
+4.5 Falls nicht: Wasser nachfüllen
+5. Kaffeepulver in Maschine füllen
+6. passende Taste auf Maschine drücken
+7. Warten bis Tasse vollgefüllt wurde
+8. Tasse entnehmen
+9. Kaffee trinken
+10. Tasse abspülen
+11. Tasse abtrocknen
+12. Tasse in Schrank stellen
