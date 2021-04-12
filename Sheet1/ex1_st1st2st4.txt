@@ -1,9 +1,9 @@
 EX 1.1 (Error Messages)
 
 Code:
-1 # include <iostream >
+1 # include <iostream>
 2
-3 using namespace std ;
+3 using namespace std;
 4
 5 int main ()
 6 {
@@ -13,7 +13,7 @@ Code:
 10  cout << ( someNumber /2);
 11 }
 
-We solved it on an Unix system..
+We solved it on an Unix system.
 
 a) Remove the semicolon after int somenumber.
 
@@ -103,7 +103,7 @@ include statement. Here we have an 'fatal error'. We should always look at those
 first, because they terminate the compilation directly.
 
 
-Based on your observations, decide which error to look at first if there are
+Based on your observations, decide which error to look at first if there are
 multiple errors!
 Our Conclusion:
 If there are multiple error messages, we would look at error messages
