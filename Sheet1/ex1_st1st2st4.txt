@@ -13,7 +13,7 @@ Code:
 10  cout << ( someNumber /2);
 11 }
 
-We solved it on an Unix system.
+We solved it on an MacOs system with the command g++ -std=c++17 -o main.o main.cpp.
 
 a) Remove the semicolon after int somenumber.
 
@@ -24,7 +24,7 @@ main.cpp:7:17: error: expected ';' at end of declaration
                  ;
 
 Error to look at first:
-There is just one error message, so we know directly that we have to add ';'
+There is only one error message, so we know directly that we have to add ';'
 at end of line 7.
 
 
@@ -37,8 +37,8 @@ main.cpp:8:12: warning: missing terminating '"' character [-Winvalid-pp-token]
 main.cpp:8:12: error: expected expression
 
 Error to look at first:
-The first error tells us, that we have to add the terminating '"'', and that
-solves also the second error.
+Here is also only one error, but in this case the warning is interesting for us
+because it tells us how to solve the error.
 
 
 c) Comment out the line using namespace std;.
@@ -66,9 +66,12 @@ main.cpp:10:3: error: use of undeclared identifier 'cout'; did you mean 'std::co
 extern _LIBCPP_FUNC_VIS ostream cout;
                                 ^
 Error to look at first:
-All three error messages make clear, that std is missing, so in this case it would
-not make a difference, at which error we look first. When we have solved one, we
-have directly solved all.
+The three error messages tell us, that we need the std library at three different lines.
+In this case it would make no difference, at which we look first, because we could solve
+them in any order by adding "std::" each. But here it is helpful to notice all
+error messages before starting to solve one, because then we can see, that it
+makes more sense to add "using namespace std;" and thereby solve all error
+messages at once.
 
 
 d) Add the modifier const before int someNumber (and thus declare a constant).
@@ -98,8 +101,8 @@ main.cpp:1:11: fatal error: 'iostream.h' file not found
           ^~~~~~~~~~~~
 
 Error to look at first:
-There is just one error message, so we know directly that we have to fix the
-include statement. Here we have an 'fatal error'. We should always look at those
+There is only one error message, so we know directly that we have to fix the
+include statement. Here we have a 'fatal error'. We should always look at those
 first, because they terminate the compilation directly.
 
 
@@ -109,8 +112,8 @@ Our Conclusion:
 If there are multiple error messages, we would look at error messages
 in this order: If fatal errors exist, we would look at them first.
 Then we we would start looking at the other error messages from the top
-(in terms of code execution). So look first at error messages, which belong to
-code lines, which run earlier (this helped us for example in d)).
+(in terms of code execution). So we look first at error messages, which belong to
+code lines, which run earlier (this helped us in d)).
 
 
 
@@ -122,7 +125,7 @@ Answer:
 Possible risks:
 i) i = l+90;
 - integer i has value range [-2147483648, ..., 2147483647]
-- long l has value range: [-(2^63), ...,(2^63)-1]
+- long l has value range [-(2^63), ...,(2^63)-1]
 -> long has a larger value range than integer
 -> l could be a number which can not be correct represented as integer,
    therefore it is also possible that l+90 can not be represented correctly
@@ -150,21 +153,14 @@ iv) i = d;
 e.g.: d = 2.5 -> cout << i = 2 (cut off decimal places = loss of precision)
       or d = 2150000000.0 -> cout << i = -2147483648 (overflow)
 
-The other assignments should be fine:
+The other type conversions are known as promotions and are guaranteed to give the exact same values
+in the destination type:
 l = i; -> both are integers and long has larger value range
 d = f; -> both are floating point numbers and double has larger value range
 f = s; -> there are integers, which can not be represented correctly by floats,
           but the smallest of them is (+/-)16777217 (represented as +1: (+/-)16777218),
           so the short value range [-128, 127] can be represented correctly,
           whereas f=i; or f=l; would have some risks
-
-
-Ricardas Answer:
-i = l+90; //because we can store longer numbers in a long than in int
-//f = s; // because we can't just interpret a short as floating point number without explicit conversion
-b = d; //because we can store more data in a double than in a char and so data will be lost (even with conversion)
-a = i; //an int can store more data than a char
-i = d; //because we lose the information after the comma, and even the rounded number might be too big to fit in an int (due to the floating point format).
 
 
 
