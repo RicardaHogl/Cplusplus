@@ -1,0 +1,209 @@
+EX 1.1 (Error Messages)
+
+Code:
+1 # include <iostream>
+2
+3 using namespace std;
+4
+5 int main ()
+6 {
+7   int someNumber;
+8   cout << " Enter a number : ";
+9   cin >> someNumber;
+10  cout << ( someNumber /2);
+11 }
+
+We solved it on an Unix system.
+
+a) Remove the semicolon after int somenumber.
+
+Error message:
+main.cpp:7:17: error: expected ';' at end of declaration
+  int  someNumber
+                 ^
+                 ;
+
+Error to look at first:
+There is just one error message, so we know directly that we have to add ';'
+at end of line 7.
+
+
+b) Remove the closing quotation mark from Enter a number:.
+
+Error message:
+main.cpp:8:12: warning: missing terminating '"' character [-Winvalid-pp-token]
+  cout  << "Enter a number: ;
+           ^
+main.cpp:8:12: error: expected expression
+
+Error to look at first:
+The first error tells us, that we have to add the terminating '"'', and that
+solves also the second error.
+
+
+c) Comment out the line using namespace std;.
+
+Error message:
+main.cpp:8:3: error: use of undeclared identifier 'cout'; did you mean 'std::cout'?
+  cout  << "Enter a number: ";
+  ^~~~
+  std::cout
+/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/iostream:53:33: note: 'std::cout' declared here
+extern _LIBCPP_FUNC_VIS ostream cout;
+                                ^
+main.cpp:9:3: error: use of undeclared identifier 'cin'; did you mean 'std::cin'?
+  cin  >> someNumber;
+  ^~~
+  std::cin
+/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/iostream:49:33: note: 'std::cin' declared here
+extern _LIBCPP_FUNC_VIS istream cin;
+                                ^
+main.cpp:10:3: error: use of undeclared identifier 'cout'; did you mean 'std::cout'?
+  cout  << (someNumber /2);
+  ^~~~
+  std::cout
+/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/iostream:53:33: note: 'std::cout' declared here
+extern _LIBCPP_FUNC_VIS ostream cout;
+                                ^
+Error to look at first:
+All three error messages make clear, that std is missing, so in this case it would
+not make a difference, at which error we look first. When we have solved one, we
+have directly solved all.
+
+
+d) Add the modifier const before int someNumber (and thus declare a constant).
+
+Error message:
+main.cpp:7:14: error: default initialization of an object of const type
+      'const int'
+  const int  someNumber;
+             ^
+                        = 0
+main.cpp:9:8: error: invalid operands to binary expression ('std::__1::istream'
+      (aka 'basic_istream<char>') and 'const int')
+  cin  >> someNumber;
+  ~~~  ^  ~~~~~~~~~~
+
+Error to look at first:
+We should look first at the first error, because there we can see, that this
+initialization with const is problematic. When we have solved this error,
+the second error is also solved.
+
+
+e) Change iostream to iostream.h.
+
+Error message:
+main.cpp:1:11: fatal error: 'iostream.h' file not found
+#include  <iostream.h>
+          ^~~~~~~~~~~~
+
+Error to look at first:
+There is just one error message, so we know directly that we have to fix the
+include statement. Here we have an 'fatal error'. We should always look at those
+first, because they terminate the compilation directly.
+
+
+Based on your observations, decide which error to look at first if there are
+multiple errors!
+Our Conclusion:
+If there are multiple error messages, we would look at error messages
+in this order: If fatal errors exist, we would look at them first.
+Then we we would start looking at the other error messages from the top
+(in terms of code execution). So look first at error messages, which belong to
+code lines, which run earlier (this helped us for example in d)).
+
+
+
+EX 1.2 (Type conversion)
+Where do you see a possible risk?
+
+Answer:
+
+Possible risks:
+i) i = l+90;
+- integer i has value range [-2147483648, ..., 2147483647]
+- long l has value range: [-(2^63), ...,(2^63)-1]
+-> long has a larger value range than integer
+-> l could be a number which can not be correct represented as integer,
+   therefore it is also possible that l+90 can not be represented correctly
+e.g.: l = 2147483649 -> cout << i = -2147483557 (overflow)
+
+ii) b = d;
+- char b has value range [-128, ..., 127]
+- double d is a 64 bit floating point number with value range [-1.797693 x 10^(308), 1.797693 x 10^(308)]
+-> d could be a number which can not be represented correctly as char
+e.g.: d = 2.5 -> cout << double(b) = 2 (cut off decimal places = loss of precision)
+      or d = 128.0 -> cout << double(b) = -128 (overflow)
+
+iii) a = i;
+- char a has value range [-128, ..., 127]
+- integer i has value range [-2147483648, ..., 2147483647]
+-> integer has a larger value range than char
+-> i could be a number which can not be represented correctly as char
+e.g.: i = 128 -> cout << int(a) = -128 (overflow)
+
+iv) i = d;
+- integer i has value range [-2147483648, ..., 2147483647]
+- double d is a 64 bit floating point number with value range [-1.797693 x 10^(308), 1.797693 x 10^(308)]
+  numbers <(-2147483648) or >2147483647
+-> d could be a number which can not be represented correctly as integer
+e.g.: d = 2.5 -> cout << i = 2 (cut off decimal places = loss of precision)
+      or d = 2150000000.0 -> cout << i = -2147483648 (overflow)
+
+The other assignments should be fine:
+l = i; -> both are integers and long has larger value range
+d = f; -> both are floating point numbers and double has larger value range
+f = s; -> there are integers, which can not be represented correctly by floats,
+          but the smallest of them is (+/-)16777217 (represented as +1: (+/-)16777218),
+          so the short value range [-128, 127] can be represented correctly,
+          whereas f=i; or f=l; would have some risks
+
+
+Ricardas Answer:
+i = l+90; //because we can store longer numbers in a long than in int
+//f = s; // because we can't just interpret a short as floating point number without explicit conversion
+b = d; //because we can store more data in a double than in a char and so data will be lost (even with conversion)
+a = i; //an int can store more data than a char
+i = d; //because we lose the information after the comma, and even the rounded number might be too big to fit in an int (due to the floating point format).
+
+
+
+Ex 1.4 (Running through an algorithm)
+a = 65, b = 25, Compute ggT(65,25)
+
+Answer:
+
+As in the lecture slides:
+ggT(65,25)  ->  65 > 25: ggT((65-25)=40, 25)
+                40 > 25: ggT((40-25)=15, 25)
+                25 > 15: ggT(15, (25-15)=10)
+                15 > 10: ggT((15-10)=5, 10)
+                10 > 5: ggT(5, (10-5)=5)
+                5 == 5: 5
+
+More detailed:
+Call ggT(65,25)
+Check 65 == 25: false
+Check 65 > 25: true
+Compute 65-25 = 40
+Call ggT(40, 25)
+Check 40 == 25: false
+Check 40 > 25: true
+Compute 40-25 = 15
+Call ggT(15,25)
+Check 15 == 25: false
+Check 15 > 25: false
+Check 15 < 25: true
+Compute 25-15 = 10
+Call ggT(15,10)
+Check 15 == 10: false
+Check 15 > 10: true
+Compute 15-10 = 5
+Call ggT(5,10)
+Check 5 == 10: false
+Check 5 > 10: false
+Check 5 < 10: true
+Compute 10-5 = 5
+Call ggT(5,5)
+Check 5 == 5: true
+Return 5
