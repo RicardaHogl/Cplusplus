@@ -28,6 +28,66 @@ Error message:
 C:\Users\Ricarda\source\repos\Cplusplus\Sheet1\ConsoleApplication1\ConsoleApplication1\ConsoleApplication1.cpp(8,22): error C2734: "someNumber": "const"-Objekt muss initialisiert werden, wenn es nicht extern ist
 C:\Users\Ricarda\source\repos\Cplusplus\Sheet1\ConsoleApplication1\ConsoleApplication1\ConsoleApplication1.cpp(10,19): error C2678: Binärer Operator ">>": Es konnte kein Operator gefunden werden, der einen linksseitigen Operanden vom Typ "std::istream" akzeptiert (oder keine geeignete Konvertierung möglich)
 
+
+UNIX Fehlerausgaben:
+a)
+main.cpp:4:18: error: expected ';' at end of declaration
+  int  someNumber
+                 ^
+                 ;
+1 error generated.
+
+b)
+main.cpp:5:12: warning: missing terminating '"' character [-Winvalid-pp-token]
+  cout  << "Enter a number: ;
+           ^
+main.cpp:5:12: error: expected expression
+
+
+c)
+main.cpp:5:3: error: use of undeclared identifier 'cout'; did you mean 'std::cout'?
+  cout  << "Enter a number: ";
+  ^~~~
+  std::cout
+/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/iostream:53:33: note: 'std::cout' declared here
+extern _LIBCPP_FUNC_VIS ostream cout;
+                                ^
+main.cpp:6:3: error: use of undeclared identifier 'cin'; did you mean 'std::cin'?
+  cin  >> someNumber;
+  ^~~
+  std::cin
+/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/iostream:49:33: note: 'std::cin' declared here
+extern _LIBCPP_FUNC_VIS istream cin;
+                                ^
+main.cpp:7:3: error: use of undeclared identifier 'cout'; did you mean 'std::cout'?
+  cout  << (someNumber /2);
+  ^~~~
+  std::cout
+/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/iostream:53:33: note: 'std::cout' declared here
+extern _LIBCPP_FUNC_VIS ostream cout;
+                                ^
+3 errors generated.
+
+d)
+main.cpp:4:14: error: default initialization of an object of const type
+      'const int'
+  const int  someNumber;
+             ^
+                        = 0
+main.cpp:6:8: error: invalid operands to binary expression ('std::__1::istream'
+      (aka 'basic_istream<char>') and 'const int')
+  cin  >> someNumber;
+  ~~~  ^  ~~~~~~~~~~
+
+e)
+main.cpp:1:11: fatal error: 'iostream.h' file not found
+#include  <iostream.h>
+          ^~~~~~~~~~~~
+1 error generated.
+
+
+
+
 -------ab hier alles messages----
 C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29910\include\istream(301,39): message : kann "std::basic_istream<char,std::char_traits<char>> &std::basic_istream<char,std::char_traits<char>>::operator >>(std::basic_streambuf<char,std::char_traits<char>> *)" sein
 C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29910\include\istream(297,39): message : oder "std::basic_istream<char,std::char_traits<char>> &std::basic_istream<char,std::char_traits<char>>::operator >>(void *&)"
