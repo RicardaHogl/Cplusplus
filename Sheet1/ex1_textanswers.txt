@@ -128,18 +128,18 @@ Where do you see a possible risk?
 
 Answer:
 
+Possible risks:
 i) i = l+90;
 - integer i has value range [-2147483648, ..., 2147483647]
 - long l has value range: [-(2^63), ...,(2^63)-1]
--> long has a bigger value range than integer
+-> long has a larger value range than integer
 -> l could be a number which can not be correct represented as integer,
    therefore it is also possible that l+90 can not be represented correctly
 e.g.: l = 2147483649 -> cout << i = -2147483557 (overflow)
 
 ii) b = d;
 - char b has value range [-128, ..., 127]
-- double d is a 64bit floating point number and can also represent lot of
-  numbers <(-128) or >127
+- double d is a 64 bit floating point number with value range [-1.797693 x 10^(308), 1.797693 x 10^(308)]
 -> d could be a number which can not be represented correctly as char
 e.g.: d = 2.5 -> cout << double(b) = 2 (cut off decimal places = loss of precision)
       or d = 128.0 -> cout << double(b) = -128 (overflow)
@@ -147,18 +147,25 @@ e.g.: d = 2.5 -> cout << double(b) = 2 (cut off decimal places = loss of precisi
 iii) a = i;
 - char a has value range [-128, ..., 127]
 - integer i has value range [-2147483648, ..., 2147483647]
--> integer has a bigger value range than char
+-> integer has a larger value range than char
 -> i could be a number which can not be represented correctly as char
 e.g.: i = 128 -> cout << int(a) = -128 (overflow)
 
 iv) i = d;
 - integer i has value range [-2147483648, ..., 2147483647]
-- double d is a 64bit floating point number and can also represent some
+- double d is a 64 bit floating point number with value range [-1.797693 x 10^(308), 1.797693 x 10^(308)]
   numbers <(-2147483648) or >2147483647
 -> d could be a number which can not be represented correctly as integer
 e.g.: d = 2.5 -> cout << i = 2 (cut off decimal places = loss of precision)
       or d = 2150000000.0 -> cout << i = -2147483648 (overflow)
 
+The other assignments should be fine:
+l = i; -> both are integers and long has larger value range
+d = f; -> both are floating point numbers and double has larger value range
+f = s; -> there are integers, which can not be represented correctly by floats,
+          but the smallest of them is (+/-)16777217 (represented as +1: (+/-)16777218),
+          so the short value range [-128, 127] can be represented correctly,
+          whereas f=i; or f=l; would have some risks
 
 
 Ricardas Answer:
