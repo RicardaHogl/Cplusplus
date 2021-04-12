@@ -125,7 +125,43 @@ Otherwise, fixing the errors starting from the top (in terms of code execution) 
 
 EX 1.2 (Type conversion)
 Where do you see a possible risk?
+
 Answer:
+
+i) i = l+90;
+- integer i has value range [-2147483648, ..., 2147483647]
+- long l has value range: [-(2^63), ...,(2^63)-1]
+-> long has a bigger value range than integer
+-> l could be a number which can not be correct represented as integer,
+   therefore it is also possible that l+90 can not be represented correctly
+e.g.: l = 2147483649 -> cout << i = -2147483557 (overflow)
+
+ii) b = d;
+- char b has value range [-128, ..., 127]
+- double d is a 64bit floating point number and can also represent lot of
+  numbers <(-128) or >127
+-> d could be a number which can not be represented correctly as char
+e.g.: d = 2.5 -> cout << double(b) = 2 (cut off decimal places = loss of precision)
+      or d = 128.0 -> cout << double(b) = -128 (overflow)
+
+iii) a = i;
+- char a has value range [-128, ..., 127]
+- integer i has value range [-2147483648, ..., 2147483647]
+-> integer has a bigger value range than char
+-> i could be a number which can not be represented correctly as char
+e.g.: i = 128 -> cout << int(a) = -128 (overflow)
+
+iv) i = d;
+- integer i has value range [-2147483648, ..., 2147483647]
+- double d is a 64bit floating point number and can also represent some
+  numbers <(-2147483648) or >2147483647
+-> d could be a number which can not be represented correctly as integer
+e.g.: d = 2.5 -> cout << i = 2 (cut off decimal places = loss of precision)
+      or d = 2150000000.0 -> cout << i = -2147483648 (overflow)
+
+
+
+Ricardas Answer:
 i = l+90; //because we can store longer numbers in a long than in int
 //f = s; // because we can't just interpret a short as floating point number without explicit conversion
 b = d; //because we can store more data in a double than in a char and so data will be lost (even with conversion)
