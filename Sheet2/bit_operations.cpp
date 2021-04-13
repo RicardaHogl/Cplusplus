@@ -35,7 +35,7 @@ int main()
       unsigned char val = vals[i];
       unsigned char p = pos[i];
 
-      unsigned char bitIs = (val>>pos)%2; /* Calculate here */
+      unsigned char bitIs = (val>>(p-1))%2; /* Calculate here */
       cout << "Bit value at position " << ((int) p) << " for the number " << ((int) val) << ": " << ((int) bitIs) << endl;
     }
   }
@@ -55,7 +55,7 @@ int main()
       unsigned char val = vals[i];
       unsigned char p = pos[i];
 
-      unsigned char setTrue = val|(1<<pos); /* Calculate here */
+      unsigned char setTrue = val|(1<<(p-1)); /* Calculate here */
       cout << "Setting Bit " << ((int) p) << " to 1 for number " << ((int) val) << ": " << ((int) setTrue) << endl;
     }
 
@@ -64,7 +64,7 @@ int main()
       unsigned char val = vals[i];
       unsigned char p = pos[i];
 
-      unsigned char setFalse = (val&~(1<<pos)); /* Calculate here */
+      unsigned char setFalse = (val&~(1<<(p-1))); /* Calculate here */
       cout << "Setting Bit " << ((int) p) << " to 0 for number " << ((int) val) << ": " << ((int) setFalse) << endl;
     }
   }
@@ -81,7 +81,21 @@ int main()
     for (i=0; i < len; i++) {
       unsigned int x = vals[i];
 
-      unsigned char complement = x; /* Calculate here */
+      unsigned char complement = ~(x); /* Calculate here */  // one-complement
+      cout << (int) complement << endl;
+      int p = 1;
+      while(p <= 8) { // add 1 -> two's complement (unsigned char has 8 bit)
+        if ((complement>>(p-1))%2) {
+          complement = complement&~(1<<(p-1)); // set all 1s right of least significant 0 to 0
+          p++;
+        }
+        else {
+          complement = complement|(1<<(p-1)); // set least significant 0 to 1
+          break;
+        }
+      }
+
+
 
       cout << "Two's complement of " << x << " is: " << ((int) complement) << endl;
     }
