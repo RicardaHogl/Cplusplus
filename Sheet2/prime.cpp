@@ -36,8 +36,21 @@ int main() {
   cout << "Calculation took: " << chrono::duration_cast<second_>
     (clock_::now() - start).count() << "s"  << endl << endl;
 
-  /*
-    Remove the block comment below
+  /* Optimizes version:
+   a) How can I stop checking more numbers if a divisor has already been found?
+      Answ.: Quit the loop with a break statement.
+
+      When is a number definitely not a prime number?
+      Answ: When it is even.
+
+   b) Does the number have to be divided with all previous numbers or can some
+      be omitted?
+      Answ.: We have just to check previous numbers 2,...,sqrt(num), because if
+             x is a divisor of num with x>sqrt(num), than it have to exist
+             y<sqrt(num) with num = x*y and we find out, thhat num is not prime
+             by checking y.
+             Futhermore if we check separately, whether num is even, than we just
+             have to test the odd values within [3,sqrt(num)].
   */
 
   cout << "Optimized version" << endl << endl;
@@ -53,8 +66,8 @@ int main() {
   else{
     for(long i = 3; i < sqrt(num); i +=2){
       if(num%i ==0){
-	isPrime = false;
-	break;
+	       isPrime = false;
+	       break;
       }
     }
   }
@@ -64,3 +77,21 @@ int main() {
     (clock_::now() - start).count() << "s"  << endl << endl;
 
 }
+
+/* c) Test your optimized version against the previous one with a large prime
+      number, such as 100000004987.
+
+      Answer: We checked it with the shorter number 1073807359 and get:
+
+      Please enter a number: 1073807359
+      The number 1073807359 is a prime?: 1
+      Calculation took: 7.86824s
+
+      Optimized version
+
+      The number 1073807359 is a prime?: 1
+      Calculation took: 0.000192985s
+
+      -> We can see, that our optimized version is much faster.
+
+*/
