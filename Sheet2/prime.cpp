@@ -47,10 +47,10 @@ int main() {
       be omitted?
       Answ.: We have just to check previous numbers 2,...,sqrt(num), because of
       the following:
-		  Assume that x is a divisor of num with x>sqrt(num). It follows that there
+      Assume that x is a divisor of num with x>sqrt(num). It follows that there
       has to exist a y with y<sqrt(num) and num = x*y. So we can find out that
       num is not prime by checking y.
-	    Futhermore if we check separately, whether num is even, then we just have
+      Futhermore if we check separately, whether num is even, then we just have
       to test the odd values within [3,sqrt(num)].
   */
 
