@@ -1,0 +1,51 @@
+# Ex 3.1 (Blocks, statements and loops)
+
+a) Compile the given programs in Listing 1 and Listing 2 with and explain the errors that occur or
+   the resulting behavior when you run the program.
+
+   Answer:
+   For both: Variables are always in the (whole) inner block (defined by {}) visible/alive,
+             in which they are declared. This means also: If after the declaration follow
+             other blocks within the block of the declaration, than the variable is there
+             also visible/alive.
+
+   Listing 1: We get an error about use of undeclared identifier 'j' respect to
+              i = j in line 8. We get this error because j is declared in line 6
+              within a brackets block {}. Therefore the lifetime of j is only
+              within {} and it is not visible outside the block.
+
+   Listing 2: We get as output i=3. The variable i is declares outside/before the
+              brackets block, so it is visible and 'alive' both within and outside
+              the block. Thats why the change to 3 within the block is also visible
+              outside/after the block.
+
+
+b) What is the value of the variable x after the execution of the respective if statement?
+
+   Answer:
+   Listing 3: x=8, because:
+              In the beginning x=5, therefore the if-condition is true and we add 3
+              (5>1 and 5<10, so it is fulfilled that 'at least one of them is true').
+
+   Listing 4: x=7, because:
+              The outer and the inner if-statements are true, because x=1 holds
+              x>=1 and x<=1. Therefore the inner if-body was run and x is 7.
+
+   Listing 5: x=-1, because:
+              The outer is condition is false (x=10 is not greater than 10),
+              thus the else-body was run and x is -1.
+
+
+c) What is the value of the variable sum after the execution of the loop?
+
+   Answer:
+   Listing 6: sum=12, because:
+              The while loop runs three times and we get sum = 0 + 6 + 4 + 2 = 12.
+
+   Listing 7: sum=6, because:
+              The do-body runs one time, after that value 9 is not smaller than 8.
+              Therefore sum = 0 + 6 = 6.
+
+   Listing 8: sum=27, because:
+              The for-body runs 4 times (for index values 0, 2, 4 and 6),
+              thus the sum is 0 + 6 + 9 + 12 = 27.
