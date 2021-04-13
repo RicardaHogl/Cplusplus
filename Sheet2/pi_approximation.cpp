@@ -30,7 +30,7 @@ int main() {
 		double epsilon = 0.0001;
 		int i = 0; /* Write the amount of iterations needed in this variable */
 		/* Calculate here */
-	  int k = 1;
+        int k = 1;
 		double sum = 0;
 		while( abs(pi - piApprox)> epsilon ){
 		  sum += 1.0/ (k * k);
@@ -49,11 +49,11 @@ int main() {
 		 What result do you get now?
 
 		 Answer:
-	   epsilon = 0.0001;
-	   It takes 9487 iterations to approximate Pi to: 3.14149
-	   The difference is: 9.99994e-05 < 0.0001
+		 epsilon = 0.0001;
+		 It takes 9487 iterations to approximate Pi to: 3.14149
+		 The difference is: 9.99994e-05 < 0.0001
 
-	   epsilon = 0.00001;
+		 epsilon = 0.00001;
 		 The program did not stop, it runs in an endless loop, because:
 		 k is an 32bit Integer, so k*k is also an 32bit integer computation.
 		 We know that the leading bit is for the sign, so the absolute value has 31bit.
