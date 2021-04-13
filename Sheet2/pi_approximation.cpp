@@ -60,7 +60,7 @@ int main() {
 		 For k=65536, it is k*k = 4294967296 = 2^(32), so there is an overflow,
 		 which leads to k*k = 2^(32) becomes 0. Thus we get sum = 1.0/0, which C++
 		 interprets as infinity. Therefore since k=65536 it is piApprox = inf
-		 in all following loop runs, and the stopping rule pi - piApprox <= abs
+		 in all following loop runs, and the stopping rule pi - piApprox <= eps
 		 will never be reached.
 
 

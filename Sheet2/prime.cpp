@@ -21,7 +21,7 @@ int main() {
   /*
     Implement the prime check here
   */
-  if (num < 1) {
+  if (num <= 1) {
     isPrime = false;
   }
   else {
@@ -40,24 +40,22 @@ int main() {
    a) How can I stop checking more numbers if a divisor has already been found?
       Answ.: Quit the loop with a break statement.
 
-      When is a number definitely not a prime number?
+      When is a number definitely not a prime number?
       Answ: When it is even.
 
    b) Does the number have to be divided with all previous numbers or can some
       be omitted?
-      Answ.: We have just to check previous numbers 2,...,sqrt(num), because if
-             x is a divisor of num with x>sqrt(num), than it have to exist
-             y<sqrt(num) with num = x*y and we find out, thhat num is not prime
-             by checking y.
-             Futhermore if we check separately, whether num is even, than we just
-             have to test the odd values within [3,sqrt(num)].
+      Answ.: We have just to check previous numbers 2,...,sqrt(num), because of the following:
+		 Assume that x is a divisor of num with x>sqrt(num). It follows that there has to exist a y with
+		 y<sqrt(num) and num = x*y. So we can find out that num is not prime by checking y.
+	 Futhermore if we check separately, whether num is even, then we just have to test the odd values within [3,sqrt(num)].
   */
 
   cout << "Optimized version" << endl << endl;
   start = clock_::now();
 
   isPrime = true;
-  if (num < 1) {
+  if (num <= 1) {
     isPrime = false;
   }
   else if(num != 2 && num%2 == 0){
@@ -92,6 +90,6 @@ int main() {
       The number 1073807359 is a prime?: 1
       Calculation took: 0.000192985s
 
-      -> We can see, that our optimized version is much faster.
+      -> We can see that our optimized version is much faster.
 
 */
