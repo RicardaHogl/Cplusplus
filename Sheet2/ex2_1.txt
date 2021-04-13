@@ -1,15 +1,39 @@
-2.1
-10 Schritte zum Kaffee
-1. Schranktür öffnen
-2. Tasse rausholen
-3. Tasse unter Automaten stellen
-4. Überprüfen, ob noch Wasser in der Maschine ist
-4.5 Falls nicht: Wasser nachfüllen
-5. Kaffeepulver in Maschine füllen
-6. passende Taste auf Maschine drücken
-7. Warten bis Tasse vollgefüllt wurde
-8. Tasse entnehmen
-9. Kaffee trinken
-10. Tasse abspülen
-11. Tasse abtrocknen
-12. Tasse in Schrank stellen
+# Ex. 2.1 (Algorithms in everyday life)
+
+This task is about representing a process from everyday life as a #
+step-by-step process. Describe in 8 to 10 steps in textual form an algorithm to
+use a coffee machine of your choice!
+
+10 Schritte zum Espresso mit einer Siebträger Kaffeemaschine:
+
+1. Siebträgermaschine anschalten
+2. Überprüfen, ob noch genug Wasser im Wassertank ist
+2.5 Falls nicht genug Wasser vorhanden: Leitungswasser nachfüllen
+3. 17 Gramm grob gemahlenen Espresso in Siebträger füllen
+4. Mit Stampfer Espressopulver fest drücken
+5. Siebträger einhängen
+6. Tasse unter Siebträger stellen
+7. Taste für 'eine Tasse' auf Maschine drücken
+8. Warten bis Tasse vollgefüllt wurde
+9. Tasse entnehmen
+(10. Siebträger entnehmen
+ 11. Espressopulver entsorgen
+ 12. Siebträger mit Wasser ausspülen
+ 13. Espresso trinken)
+
+Consider the properties of an algorithm mentioned in the lecture:
+1. Specification:
+  Input und Output lassen sich aus der Beschreibung herauslesen:
+  Input: (ein beliebiges siebträgergeeignetes) Espressopulver und Leitungswasser
+  Output: trinkfertigen Espresso
+
+2. Feasibility:
+  - Finite description: Der Prozess ist in einem endlichen Text komplett beschrieben.
+  - Effectiveness: Wir haben alle Schritte erprobt, sie sind also ausführbar.
+  - Determinacy: Alle Schritte sind durchnummeriert und ergeben einen festgelegten Ablauf.
+
+3. Correctness:
+  - Termination: Nachdem alle Schritte abgearbeitet wurden, terminiert der
+                 Prozess und wir erhalten trinkbaren Espresso, sofern wir
+                 Leitungswasser und siebträger geeignetes
+                 Espressopullver als Input verwendet haben.
