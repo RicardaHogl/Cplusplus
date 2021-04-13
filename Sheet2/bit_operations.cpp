@@ -83,11 +83,9 @@ int main()
 
       unsigned char complement = ~(x); /* Calculate here */  // one-complement
       cout << (int) complement << endl;
-      int p = 1;
-      while(p <= 8) { // add 1 -> two's complement (unsigned char has 8 bit)
+      for(int p = 1; p <= 8; p++) { // add 1 -> two's complement (unsigned char has 8 bit)
         if ((complement>>(p-1))%2) {
-          complement = complement&~(1<<(p-1)); // set all 1s right of least significant 0 to 0
-          p++;
+          complement = complement&~(1<<(p-1)); // set all 1's right of least significant 0 to 0
         }
         else {
           complement = complement|(1<<(p-1)); // set least significant 0 to 1
@@ -114,6 +112,19 @@ int main()
 
       unsigned char res = 0;
       /* Calculate here */
+      for (int p = 8; p >=1; p--){
+        if ((val>>(p-1))%2) {  // find most significant 1
+          if ((val>>(p-2))%2){ // if next bit is also 1, we have to round up
+            res = p;
+          }
+          else{
+            res = p-1; // if result is exact/rounded down, position-1 of most significant 1 gives the two's log
+          }
+          break;
+        }
+      }
+
+      // this gives log(0)=0, but on ex. sheet is x>1 given, so we accept this result
 
       cout << "log2 of " << ((int) val) << " is: " << ((int) res) << endl;
     }
