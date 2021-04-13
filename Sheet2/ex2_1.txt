@@ -6,7 +6,7 @@ use a coffee machine of your choice!
 
 10 Schritte zum Espresso mit einer Siebträger Kaffeemaschine:
 
-1. Siebträgermaschine anschalten
+1. Siebträgermaschine per Tastendruck aus Standby-Modus aktivieren
 2. Überprüfen, ob noch genug Wasser im Wassertank ist
 2.5 Falls nicht genug Wasser vorhanden: Leitungswasser nachfüllen
 3. 17 Gramm grob gemahlenen Espresso in Siebträger füllen
