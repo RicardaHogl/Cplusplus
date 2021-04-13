@@ -17,17 +17,21 @@ int main() {
   chrono::time_point<clock_> start = clock_::now();
 
   bool isPrime = true;
-    
+
   /*
     Implement the prime check here
   */
-  for(long i = 2; i <num;i++ ){
-    isPrime = isPrime && num % i !=0;
+  if (num < 1) {
+    isPrime = false;
   }
-    
+  else {
+    for(long i = 2; i <num;i++ ){
+      isPrime = isPrime && num % i !=0;
+    }
+  }
 
-    
-  cout << "The number " << num << " is a prime?: " << isPrime << endl; 
+
+  cout << "The number " << num << " is a prime?: " << isPrime << endl;
   /* Stop time measurement and output the duration */
   cout << "Calculation took: " << chrono::duration_cast<second_>
     (clock_::now() - start).count() << "s"  << endl << endl;
@@ -35,12 +39,18 @@ int main() {
   /*
     Remove the block comment below
   */
-    
+
   cout << "Optimized version" << endl << endl;
   start = clock_::now();
-    
+
   isPrime = true;
-  if(num%2 !=0){
+  if (num < 1) {
+    isPrime = false;
+  }
+  else if(num != 2 && num%2 == 0){
+    isPrime = false;
+  }
+  else{
     for(long i = 3; i < sqrt(num); i +=2){
       if(num%i ==0){
 	isPrime = false;
@@ -48,9 +58,9 @@ int main() {
       }
     }
   }
-  
-  cout << "The number " << num << " is a prime?: " << isPrime << endl; 
+
+  cout << "The number " << num << " is a prime?: " << isPrime << endl;
   cout << "Calculation took: " << chrono::duration_cast<second_>
     (clock_::now() - start).count() << "s"  << endl << endl;
-       
+
 }
