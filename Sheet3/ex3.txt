@@ -67,9 +67,8 @@ i) What is the difference between sizeof(funnyNumbers) and sizeof(*funnyNumbers)
 ii) Try to find out what this program does.
 
     Answer:
-		We use an int-array to store 4 chars (each 1 byte long) in each cell (that can hold one 4 byte int). So we write
-		to the storage:  (1,2,3,4),(5,6,7,8),(9,10,11,12),(13,14,15,16),(17,18,19,20) (with each "tupel" being representative of one cell).
-		But when we read from the storage in the second for loop, we interpret each block of bytes as big endian integer, with the least significant byte (holding char 4,8,12,16,20) stored at the front. So we read the following content from the storage (first given as the original char values): (4,3,2,1),(8,7,6,5),(12,11,10,9),(16,15,14,13),(20,19,18,17) with each "tupel" being interpreted as a single integer.
+		We use an int-array to store the least significant byte of four integers in each array cell (that would usually hold one 4 byte int). Since the numbers from 1 to 20 all fit into the least significant byte, we write to the storage:  (1,2,3,4),(5,6,7,8),(9,10,11,12),(13,14,15,16),(17,18,19,20) (with each "tupel" being representative of one array cell).
+		But when we read from the storage in the second for-loop, we interpret each block of bytes as big endian integer, with the least significant byte (holding char 4,8,12,16,20) stored at the front. So we read the following content from the storage (first given as the original char values): (4,3,2,1),(8,7,6,5),(12,11,10,9),(16,15,14,13),(20,19,18,17) with each "tupel" being interpreted as a single integer.
 		Below, we give these values as the bitstring and as the integer that is finally output in this for loop:
 
     00000100 00000011 00000010 00000001 -> 67305985
@@ -78,11 +77,11 @@ ii) Try to find out what this program does.
     00010000 00001111 00001110 00001101 -> 269422093
     00010100 00010011 00010010 00010001 -> 336794129
 
-Our more detailed explanation of what might have happened (in German):
+Our more detailed explanation of what has happened (in German):
  ( char*) funnyNumbers # interpretiere/caste den Intpointer als charpointer
- (( char*) funnyNumbers + i) # gehe im Array an den Beginn des i'ten chars (also berechne die Adresse davon)
+ (( char*) funnyNumbers + i) # gehe im Array an den Beginn des i'ten chars (genauer: berechne die Adresse davon)
  ( int*) (( char*) funnyNumbers + i) # wir kreieren/casten einen int-Pointer zu dieser Adresse 
- *( int*) (( char*) funnyNumbers + i)=c; # und speichere an diese Adresse c.
+ *( int*) (( char*) funnyNumbers + i)=c; # und speichere an diese Adresse den Integer c. Im nächsten Schleifendurchlauf werden die höherwertigen drei Bytes dieses Integers überschrieben.
  
  Dadurch ergibt sich, wenn z.B. in funnyNumbers die Adresse 0xF000 gespeichert ist, für i=2:
  (( char*) funnyNumbers + i) = Speicherbereich [0xF002,0xF003)
