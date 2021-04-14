@@ -122,7 +122,7 @@ int main () {
       int n = nArr[i];
       bool *markerArr = new bool[n+1]; // save true on index m, if m not prime
       for (int m=2; m<=n; m++){
-        for (int k=2; k<= sqrt(n); k++){
+        for (int k=2; k<= min(sqrt(n),m); k++){
           if(m%k == 0 && m!=k){
             markerArr[m] = true;
             break;

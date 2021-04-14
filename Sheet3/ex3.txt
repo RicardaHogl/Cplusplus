@@ -47,7 +47,7 @@ c) What is the value of the variable sum after the execution of the loop?
               Therefore sum = 0 + 6 = 6.
 
    Listing 8: sum=27, because:
-              The for-body runs 4 times (for index values 0, 2, 4 and 6),
+              The for-body runs 3 times (for index values 0, 3, 6),
               thus the sum is 0 + 6 + 9 + 12 = 27.
 
 
@@ -67,3 +67,9 @@ i) What is the difference between sizeof(funnyNumbers) and sizeof(*funnyNumbers)
 ii) Try to find out what this program does.
 
     Answer:
+		We use an intarray to store 4 chars in each cell, so we write [(1|2|3|4),(5,6,7,8),(9,10,11,12),(13,14,15,16),(17,18,19,20)], but when the chars get interpreted as integers again in the second for loop, the total output will be 
+		0000 0001 0000 0010 0000 0011 0000 0100 -> 16.909.060,
+		0000 0101 0000 0110 0000 0111 0000 1000 -> 84.281.096,
+		0000 1001 0000 1010 0000 1011 0000 1100 -> 151.653.132,
+		0000 1101 0000 1110 0000 1111 0001 0000 -> 219.025.168,
+		0001 0001 0001 0010 0001 0011 0001 0100 -> 286.397.204
