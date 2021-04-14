@@ -114,29 +114,29 @@ int main () {
 
     int nArr[] = {10, 100};
     int expectedResult[] = {17, 1060};
-    
+
     int len = sizeof(nArr)/sizeof(nArr[0]);
     int max = nArr[0];
 
     for (int i = 0; i < len; i++) {
       int n = nArr[i];
-      bool *arr = new bool[n+1];
+      bool *markerArr = new bool[n+1]; // save true on index m, if m not prime
       for (int m=2; m<=n; m++){
         for (int k=2; k<= sqrt(n); k++){
           if(m%k == 0 && m!=k){
-            arr[m] = true;
+            markerArr[m] = true;
             break;
           }
         }
       }
       int sum = 0;
       for (int j=2; j<=n; j++){
-        if (!arr[j]){
+        if (!markerArr[j]){
           sum += j;
         }
       }
 
-      delete[] arr;
+      delete[] markerArr;
 
     cout << "For n = " << n << " expected sum is " << expectedResult[i];
     cout << " and we get sum " << sum << endl;
