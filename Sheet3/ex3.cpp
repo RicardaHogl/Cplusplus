@@ -35,9 +35,7 @@ int main () {
        sum -= 1.0/(2*k+1);
      }
     }
-
      cout << "The Leibnitz series for n=1000000 is: " << sum << endl << endl;
-
   }
 
   { // c) Collatz
@@ -47,8 +45,7 @@ int main () {
     int maxN = -1;
     int counter;
     int getAll = true;
-    int s; // start value should be visible after the for-loop
-    for (s = 1; s <= 1000000; s++){ // we check starting values s=1,...,10^6
+    for (int s = 1; s <= 1000000; s++){ // we check starting values s=1,...,10^6
       counter = 0;
       int lastThree[3] = {};
       long n = s;
@@ -56,15 +53,15 @@ int main () {
               && !(lastThree[0] == 1 && lastThree[1] == 2 && lastThree[2] == 4))
         {
           counter++;
+          lastThree[2] = lastThree[1];
+          lastThree[1] = lastThree[0];
+          lastThree[0] = n;
           if (n%2==0) {
             n = n/2;
           }
           else {
             n = 3*n+1;
           }
-          lastThree[2] = lastThree[1];
-          lastThree[1] = lastThree[0];
-          lastThree[0] = n;
         }
         if (counter > maxLength){
           maxLength = counter;
@@ -135,14 +132,10 @@ int main () {
           sum += j;
         }
       }
-
       delete[] markerArr;
-
-    cout << "For n = " << n << " expected sum is " << expectedResult[i];
-    cout << " and we get sum " << sum << endl;
-
+      cout << "For n = " << n << " expected sum is " << expectedResult[i];
+      cout << " and we get sum " << sum << endl;
     }
   }
-
 
 }
