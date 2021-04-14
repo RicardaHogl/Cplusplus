@@ -67,9 +67,13 @@ i) What is the difference between sizeof(funnyNumbers) and sizeof(*funnyNumbers)
 ii) Try to find out what this program does.
 
     Answer:
-		We use an intarray to store 4 chars in each cell, so we write [(1|2|3|4),(5,6,7,8),(9,10,11,12),(13,14,15,16),(17,18,19,20)], but when the chars get interpreted as integers again in the second for loop, the total output will be 
-		0000 0001 0000 0010 0000 0011 0000 0100 -> 16.909.060,
-		0000 0101 0000 0110 0000 0111 0000 1000 -> 84.281.096,
-		0000 1001 0000 1010 0000 1011 0000 1100 -> 151.653.132,
-		0000 1101 0000 1110 0000 1111 0001 0000 -> 219.025.168,
-		0001 0001 0001 0010 0001 0011 0001 0100 -> 286.397.204
+		We use an int-array to store 4 chars in each cell, so we write
+    [(4,3,2,1),(8,7,6,5),(12,11,10,9),(16,15,14,13),(20,19,18,17)],
+    but when the chars get interpreted as integers again in the second
+    for loop, the total output will be: 
+
+    00000100 00000011 00000010 00000001 -> 67305985
+    00001000 00000111 00000110 00000101 -> 134678021
+    00001100 00001011 00001010 00001001 -> 202050057
+    00010000 00001111 00001110 00001101 -> 269422093
+    00010100 00010011 00010010 00010001 -> 336794129
