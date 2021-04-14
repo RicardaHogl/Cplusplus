@@ -65,6 +65,5 @@ i) What is the difference between sizeof(funnyNumbers) and sizeof(*funnyNumbers)
    an integer array, for which we get the 32bit integer size 4.
 
 ii) Try to find out what this program does.
-    Hint: Unclutter statements and split them into
 
     Answer:
