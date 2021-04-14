@@ -71,15 +71,17 @@ int main () {
     }
   }
 
+
   /*
   3.3 (Iterating over arrays)
   */
 
   {
-    int arr [5] = {3 , -1 ,4 , -2 ,0};
+    int arr[5] = {3 , -1 ,4 , -2 ,0};
+    int len = sizeof(arr)/sizeof(arr[0]);
     int min = arr[0];
     int idx = 0;
-    for (int i=1; i<5; i++){
+    for (int i=1; i<len; i++){
       if (arr[i] < min){
         min = arr[i];
         idx = i;
@@ -88,6 +90,37 @@ int main () {
     cout << "The minimum of the array is " << min << " at index " << idx << endl;
   }
 
+
+  /*
+  3.4 (Sieve of Eratosthenes)
+  */
+
+  {
+    int nArr[] = {10, 100};
+    int len = sizeof(nArr)/sizeof(nArr[0]);
+    int expectedResult[] = {17, 1060};
+
+    for (int i = 0; i < len; i++) {
+      int n = nArr[i];
+      bool arr[] = {};
+      for (int k=2; k<= sqrt(n); k++){
+        for (int m=2; m<=n; m++){
+          if(m%k == 0){
+            arr[m] = true;
+          }
+        }
+      }
+      int sum = 0;
+      for (int j = 0; j < n; j++){
+        if (arr[j]){
+          sum += j;
+        }
+      }
+
+    cout << "For n = " << n << "expected sum is " << expectedResult[i] << " and we get sum " << sum << endl;
+
+    }
+  }
 
 
 }
