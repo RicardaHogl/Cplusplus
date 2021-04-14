@@ -71,6 +71,22 @@ int main () {
     }
   }
 
+  /*
+  3.3 (Iterating over arrays)
+  */
+
+  {
+    int arr [5] = {3 , -1 ,4 , -2 ,0};
+    int min = arr[0];
+    int idx = 0;
+    for (int i=1; i<5; i++){
+      if (arr[i] < min){
+        min = arr[i];
+        idx = i;
+      }
+    }
+    cout << "The minimum of the array is " << min << " at index " << idx << endl;
+  }
 
 
 
