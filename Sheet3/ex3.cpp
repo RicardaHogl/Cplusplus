@@ -113,10 +113,10 @@ int main () {
     cout << "3.4" << endl;
 
     int nArr[] = {10, 100};
+    int expectedResult[] = {17, 1060};
+    
     int len = sizeof(nArr)/sizeof(nArr[0]);
     int max = nArr[0];
-
-    int expectedResult[] = {17, 1060};
 
     for (int i = 0; i < len; i++) {
       int n = nArr[i];

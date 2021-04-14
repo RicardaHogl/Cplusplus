@@ -49,3 +49,22 @@ c) What is the value of the variable sum after the execution of the loop?
    Listing 8: sum=27, because:
               The for-body runs 4 times (for index values 0, 2, 4 and 6),
               thus the sum is 0 + 6 + 9 + 12 = 27.
+
+
+# Ex 3.5 (Pointer Panic)
+
+i) What is the difference between sizeof(funnyNumbers) and sizeof(*funnyNumbers)?
+
+   Answer:
+   sizeof(funnyNumers):
+   Size of the pointer, which means the address, where he points to.
+   For our compiler this would be 4 for all (normal) pointers.
+
+   sizeof(*funnyNumbers):
+   Size of the element, the pointer points to. So here it is the first element of
+   an integer array, for which we get the 32bit integer size 4.
+
+ii) Try to find out what this program does.
+    Hint: Unclutter statements and split them into
+
+    Answer:
