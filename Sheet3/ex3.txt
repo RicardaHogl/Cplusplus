@@ -15,9 +15,9 @@ a) Compile the given programs in Listing 1 and Listing 2 with and explain the er
               within {} and it is not visible outside the block.
 
    Listing 2: We get as output i=3. The variable i is declares outside/before the
-              brackets block, so it is visible and 'alive' both within and outside
-              the block. Thats why the change to 3 within the block is also visible
-              outside/after the block.
+              brackets block in line 4-6, so it is visible and 'alive' both within
+              and outside this block. Thats why the change to 3 within the block is
+              also visible outside/after the block.
 
 
 b) What is the value of the variable x after the execution of the respective if statement?
@@ -28,11 +28,11 @@ b) What is the value of the variable x after the execution of the respective if 
               (5>1 and 5<10, so it is fulfilled that 'at least one of them is true').
 
    Listing 4: x=7, because:
-              The outer and the inner if-statements are true, because x=1 holds
+              The outer and the inner if-conditions are true, because x=1 holds
               x>=1 and x<=1. Therefore the inner if-body was run and x is 7.
 
    Listing 5: x=-1, because:
-              The outer is condition is false (x=10 is not greater than 10),
+              The outer if-condition is false (x=10 is not greater than 10),
               thus the else-body was run and x is -1.
 
 
