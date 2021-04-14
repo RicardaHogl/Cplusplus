@@ -98,26 +98,31 @@ int main () {
   {
     int nArr[] = {10, 100};
     int len = sizeof(nArr)/sizeof(nArr[0]);
+    int max = nArr[0];
+
     int expectedResult[] = {17, 1060};
 
     for (int i = 0; i < len; i++) {
       int n = nArr[i];
-      bool arr[] = {};
-      for (int k=2; k<= sqrt(n); k++){
-        for (int m=2; m<=n; m++){
-          if(m%k == 0){
+      bool *arr = new bool[n+1];
+      for (int m=2; m<=n; m++){
+        for (int k=2; k<= sqrt(n); k++){
+          if(m%k == 0 && m!=k){
             arr[m] = true;
+            break;
           }
         }
       }
       int sum = 0;
-      for (int j = 0; j < n; j++){
-        if (arr[j]){
+      for (int j=2; j<=n; j++){
+        if (!arr[j]){
           sum += j;
         }
       }
 
-    cout << "For n = " << n << "expected sum is " << expectedResult[i] << " and we get sum " << sum << endl;
+      delete[] arr;
+
+    cout << "For n = " << n << " expected sum is " << expectedResult[i] << " and we get sum " << sum << endl;
 
     }
   }
