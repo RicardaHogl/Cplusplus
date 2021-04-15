@@ -3,13 +3,15 @@
 a) Listing 1
 
 (i) What would happen if the depth of recursion were not constrained? Will line 11 ever be reached?
-    Answ.: Line 11 will never be reached because since there is no termination condition
+    Answ.:
+    Line 11 will never be reached because since there is no termination condition
     for the endless stack, so the program runs in an endless loop (if there would not be an
     break up through an error).
 
 (ii) Compile and run the program. How many times will endless() be executed? Write down
      your result!
-     Answ.: endless() will be executed n = 262040 times, than the program runs in an
+     Answ.:
+     endless() will be executed n = 262040 times, than the program runs in an
      segmentation fault, because ...
 
 (iii) Add the line
@@ -25,3 +27,59 @@ a) Listing 1
      Answ.:
      As in (ii), endless() was executes  n = 262040 times, so we have the same result as before.
      Because ...
+
+
+# 4.2 (Depths of the recursion)
+
+    Example a):
+    line 3: There is no endcase specified, so the program will run in a segmentation fault.
+    Correction:
+    if (n>0) {
+      m += functionA(n-1)*0.5;
+    }
+
+    Example b):
+    line 4: We always call function B with the same parameter, so even though we
+    specify an end case, it will not be reached.
+    Correction:
+    return 2 + functionB(n-1);
+    (we should also change line 2 n==0 to n<=0, so that negative input will not run in an error)
+
+    Example c)
+    line 4: We calculate functionC(n-1) recursively two times.
+    Better:
+    Either just calculate it once, store this value in a variable and use this
+    variable twice.
+    Another strategy would be to use dynamic programming (which even prevents
+    repeated functionC(n-2) calls). This solution might need more storage space,
+    but that way we only need to calculate each functionC(k) once instead of three
+    times, and look this value up in subsequent calls.
+
+
+
+
+# 4.3 (Real world objects)
+      Define the two real world objects printer and RollerSkates. Specify at least 4
+      attributes and 4 methods for each object.
+
+      Answ.:
+
+      printer:
+        attributes:
+          double depth, width, height;
+          int pages_left;
+        methods:
+          copy;
+          scan;
+          refillpages;
+          print;
+
+      RollerSkates:
+        attributes:
+          Roll[] rolls, Shoelace shoelace, Brake brake, bool FootInside
+        methods:
+          roll_forward;
+          roll_backward;
+          brake;
+          put_on_foot;
+          pull_foot_out;
