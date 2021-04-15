@@ -71,15 +71,15 @@ a) Listing 1
       attributes and 4 methods for each object.
 
       Answ.:
-
+      (more detailed version below)
       printer:
         attributes:
-          - string serial number
-          - double depth, width, height, weight
-          - int ink_level
-          - enum{off, power up, ready, printing, error} state
-          - bool no_paper
-          - string[] job_queue
+          - serial number
+          - depth, width, height, weight
+          - ink_level
+          - state
+          - no_paper
+          - job_queue
         methods:
           - check_ink_level
           - change_state
@@ -90,16 +90,50 @@ a) Listing 1
 
       RollerSkates:
         attributes:
+          - name
+          - size
+          - color
+          - targetgroup
+          - wheels
+          - has_shoelace
+          - driving_direction
+          - current_speed
+        methods:
+          - choose_driving_direction
+          - brake
+          - accelerate
+          - change_wheels
+
+
+      More detailed:
+      printer:
+        attributes:
+          - string serial number
+          - double depth, width, height, weight
+          - int ink_level
+          - enum Printerstates {off, power up, ready, printing, error} state
+          - bool no_paper
+          - string[] job_queue
+        methods:
+          - bool check_ink_level(int ink_level)  // ink_level is good/bad
+          - void change_state(Printerstate target_state)
+          - void check_paper() // change no_paper attribute
+          - void receive_data(string data) // add data to job queue
+          - void print()
+          - void raise_warnings() // did some checks and print errors
+
+      RollerSkates:
+        attributes:
           - string name
           - string size
           - enum color
-          - enum{woman, man, unisex, girl, boy} for_whom
-          - Rolls rolls
-          - bool shoelace
-          - enum{forward, backward} driving_direction
-          - int current_speed
+          - enum Targetgroups{woman, man, unisex, girl, boy} targetgroup
+          - Wheels wheels  // some specification about the wheels
+          - bool has_shoelace
+          - enum Directions{forward, backward} driving_direction
+          - float current_speed
         methods:
-          - roll_forward
-          - roll_backward
-          - brake
-          - accelerate
+          - void choose_driving_direction(enum Directions direction) // if current speed = 0, you can choose direction
+          - void brake(float speed_change) //decrease current speed
+          - void accelerate(float speed_change) //increase current speed
+          - void change_wheels(Wheels wheels) // e.g. if buying the newest cool wheels
