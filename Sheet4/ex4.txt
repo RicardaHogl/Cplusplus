@@ -74,20 +74,32 @@ a) Listing 1
 
       printer:
         attributes:
-          double depth, width, height;
-          int pages_left;
+          - string serial number
+          - double depth, width, height, weight
+          - int ink_level
+          - enum{off, power up, ready, printing, error} state
+          - bool no_paper
+          - string[] job_queue
         methods:
-          copy;
-          scan;
-          refillpages;
-          print;
+          - check_ink_level
+          - change_state
+          - check_paper
+          - receive_data
+          - print
+          - raise_warnings
 
       RollerSkates:
         attributes:
-          Roll[] rolls, Shoelace shoelace, Brake brake, bool FootInside
+          - string name
+          - string size
+          - enum color
+          - enum{woman, man, unisex, girl, boy} for_whom
+          - Rolls rolls
+          - bool shoelace
+          - enum{forward, backward} driving_direction
+          - int current_speed
         methods:
-          roll_forward;
-          roll_backward;
-          brake;
-          put_on_foot;
-          pull_foot_out;
+          - roll_forward
+          - roll_backward
+          - brake
+          - accelerate
