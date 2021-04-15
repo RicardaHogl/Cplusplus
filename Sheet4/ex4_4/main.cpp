@@ -27,4 +27,6 @@ int main () {
     cout << "Tier " << i+1 << " ist " << animals[i].getAge() << " Jahre alt." << endl;
   }
 
+  delete[] animals;
+
 }

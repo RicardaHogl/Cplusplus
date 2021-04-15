@@ -11,7 +11,7 @@ class Reptile : public Animal{
         Reptile();
         ~Reptile();
         bool getHasFeet();
-        void setHasFeet(bool _hasFeet);
+        // void setHasFeet(bool _hasFeet);
 };
 
 #endif

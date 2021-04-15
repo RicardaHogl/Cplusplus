@@ -3,7 +3,7 @@ using namespace std;
 
 Reptile::Reptile()
 {
-    d_hasFeet = 0;
+    d_hasFeet = false;
     cout << "Reptile base constructor" << endl;
 }
 
@@ -22,6 +22,6 @@ bool Reptile::getHasFeet(){
     return d_hasFeet;
 }
 
-void Reptile::setHasFeet(bool _hasFeet){
-    d_hasFeet = _hasFeet;
-}
+// void Reptile::setHasFeet(bool _hasFeet){
+//     d_hasFeet = _hasFeet;
+// }
