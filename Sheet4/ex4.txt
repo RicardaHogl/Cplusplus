@@ -5,9 +5,9 @@ a) Listing 1
 (i) What would happen if the depth of recursion were not constrained? Will line 11 ever be reached?
     Answ.:
     Line 11 would never be reached, because there is no termination condition
-    within the recursive function endless. Therefore the program would run in an
+    within the recursive function endless(). Therefore the program would run in an
     endless loop by calling endless(1) in line 10, if the depth of recursion
-    were not contrained.
+    were not constrained.
 
 (ii) Compile and run the program. How many times will endless() be executed?
      Write down your result!
@@ -34,7 +34,8 @@ a) Listing 1
 # 4.2 (Depths of the recursion)
 
     Example a):
-    line 3: There is no endcase specified, so the program will run in a segmentation fault.
+    line 3: There is no termination condition specified, so the program will run
+    in a segmentation fault.
     Correction:
     if (n>0) {
       m += functionA(n-1)*0.5;
@@ -42,14 +43,14 @@ a) Listing 1
 
     Example b):
     line 4: We always call function B with the same parameter, so even though we
-    specify an end case, it will not be reached.
+    specify an termination condition, it will not be reached.
     Correction:
     return 2 + functionB(n-1);
     (we should also change line 2 if(n==0) to if(n<=0), so that negative input
     will not run in an error)
 
     Example c)
-    1. line 2: the end case if(n == 0) can just be reached for input 0, otherwise
+    1. line 2: the termination condition if(n == 0) can just be reached for input 0, otherwise
        the execution of functionC leads to a stack overflow
        Correction:
        Change if(n == 0) to if(n <= 0)
