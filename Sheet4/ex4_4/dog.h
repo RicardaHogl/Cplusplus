@@ -7,7 +7,7 @@ class Dog : public Mammal {
   float d_kilosFoodPerDay;
 
     public:
-        Dog(unsigned short _age, double hairLength, double _kilosFoodPerDay);
+        Dog(unsigned short _age, double hairLength, float _kilosFoodPerDay);
         Dog();
         ~Dog();
         float getKilosFoodPerDay();

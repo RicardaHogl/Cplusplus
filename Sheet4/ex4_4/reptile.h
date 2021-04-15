@@ -1,12 +1,13 @@
 #ifndef REPTILE_H_
 #define REPTILE_H_
 #include <iostream>
+#include "animal.h"
 
-class Reptile {
+class Reptile : public Animal{
     bool d_hasFeet;
 
     public:
-        Reptile(unsigned short age, bool _hasFeet);
+        Reptile(unsigned short _age, bool _hasFeet);
         Reptile();
         ~Reptile();
         bool getHasFeet();

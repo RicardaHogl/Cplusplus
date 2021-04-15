@@ -7,7 +7,7 @@ Dog::Dog()
     cout << "Dog base constructor" << endl;
 }
 
-Dog::Dog(unsigned short _age, double _hairLength double _kilosFoodPerDay)
+Dog::Dog(unsigned short _age, double _hairLength, float _kilosFoodPerDay)
 :Mammal(_age, _hairLength)
 {
     d_kilosFoodPerDay = _kilosFoodPerDay;
@@ -18,10 +18,10 @@ Dog::~Dog(){
     cout << "Dog destructor" << endl;
 }
 
-double Dog::getKilosFoodPerDay(){
+float Dog::getKilosFoodPerDay(){
     return d_kilosFoodPerDay;
 }
 
-void Dog::setKilosFoodPerDay(double _kilosFoodPerDay){
+void Dog::setKilosFoodPerDay(float _kilosFoodPerDay){
     d_kilosFoodPerDay = _kilosFoodPerDay;
 }

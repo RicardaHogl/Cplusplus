@@ -11,8 +11,8 @@ class Cat : public Mammal {
         Cat(unsigned short _age, double _hairLength, std::string _eyeColor);
         Cat();
         ~Cat();
-        std::string getEyecolor();
-        void setEyecolor(std::string _eyeColor);
+        std::string getEyeColor();
+        void setEyeColor(std::string _eyeColor);
 };
 
 #endif

@@ -7,7 +7,7 @@ Reptile::Reptile()
     cout << "Reptile base constructor" << endl;
 }
 
-Reptile::Reptile(unsigned short _age; bool _hasFeet)
+Reptile::Reptile(unsigned short _age, bool _hasFeet)
 :Animal(_age)
 {
     d_hasFeet = _hasFeet;
@@ -18,8 +18,8 @@ Reptile::~Reptile(){
     cout << "Reptile destructor" << endl;
 }
 
-double Reptile::getHasFeet(){
-    return hasFeet;
+bool Reptile::getHasFeet(){
+    return d_hasFeet;
 }
 
 void Reptile::setHasFeet(bool _hasFeet){

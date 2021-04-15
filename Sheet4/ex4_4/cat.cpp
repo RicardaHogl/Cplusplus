@@ -7,7 +7,7 @@ Cat::Cat()
     cout << "Cat base constructor" << endl;
 }
 
-Cat::Cat(unsigned short _age; double _hairlength, std::string _eyeColor)
+Cat::Cat(unsigned short _age, double _hairLength, std::string _eyeColor)
 :Mammal(_age, _hairLength)
 {
     d_eyeColor = _eyeColor;
@@ -19,7 +19,7 @@ Cat::~Cat(){
 }
 
 std::string Cat::getEyeColor(){
-    return eyeColor;
+    return d_eyeColor;
 }
 
 void Cat::setEyeColor(std::string _eyeColor){
