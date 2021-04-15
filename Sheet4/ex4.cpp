@@ -1,6 +1,6 @@
 // Ex  4.1 b
 /*
-The function recursive computes the digit sum (in german: Quersumme).
+The function recursive computes the digit sum (in German: Quersumme).
 */
 
 #include<stdio.h>
@@ -9,8 +9,8 @@ The function recursive computes the digit sum (in german: Quersumme).
 unsigned long iterative(unsigned long n) {
   unsigned long sum = 0;
   for (int i=0; i<=log10(n); i++){
-    unsigned long firstDigits = (n/pow(10,i));
-  	sum+=firstDigits%10;
+    unsigned long firstDigits = (n/pow(10,i)); // cutt of i last digits
+  	sum += firstDigits%10; // get the last digit and add it to sum
   }
   return sum;
 }
