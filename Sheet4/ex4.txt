@@ -4,15 +4,16 @@ a) Listing 1
 
 (i) What would happen if the depth of recursion were not constrained? Will line 11 ever be reached?
     Answ.:
-    Line 11 will never be reached because since there is no termination condition
-    for the endless stack, so the program runs in an endless loop (if there would not be an
-    break up through an error).
+    Line 11 would never be reached, because there is no termination condition
+    within the recursive function endless. Therefore the program would run in an
+    endless loop by calling endless(1) in line 10, if the depth of recursion
+    were not contrained.
 
 (ii) Compile and run the program. How many times will endless() be executed? Write down
      your result!
      Answ.:
      endless() will be executed n = 262040 times, than the program runs in an
-     segmentation fault, because ...
+     segmentation fault, because of the stack overflow.
 
 (iii) Add the line
       har memoryOnStack [1000];
@@ -22,11 +23,12 @@ a) Listing 1
       a new 1000-byte-Array in every call. Now endless() will be executed only
       n = 7940 times until the segmentation fault occur.
 
-(iv) Delete the newly inserted line again and run the program a second time. Do you get the same
-     result as before?
+(iv) Delete the newly inserted line again and run the program a second time.
+     Do you get the same result as before?
      Answ.:
-     As in (ii), endless() was executes  n = 262040 times, so we have the same result as before.
-     Because ...
+     endless() was executes n = 262040 times, so we have the same result
+     as before in (ii). The result of (iii) has no effect, because the code
+     was new compiled.
 
 
 # 4.2 (Depths of the recursion)
