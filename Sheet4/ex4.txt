@@ -9,11 +9,11 @@ a) Listing 1
     endless loop by calling endless(1) in line 10, if the depth of recursion
     were not contrained.
 
-(ii) Compile and run the program. How many times will endless() be executed? Write down
-     your result!
+(ii) Compile and run the program. How many times will endless() be executed?
+     Write down your result!
      Answ.:
-     endless() will be executed n = 262040 times, than the program runs in an
-     segmentation fault, because of the stack overflow.
+     endless() will be executed n = 262040 times, than the program runs in a
+     segmentation fault caused by the stack overflow.
 
 (iii) Add the line
       har memoryOnStack [1000];
@@ -45,17 +45,23 @@ a) Listing 1
     specify an end case, it will not be reached.
     Correction:
     return 2 + functionB(n-1);
-    (we should also change line 2 n==0 to n<=0, so that negative input will not run in an error)
+    (we should also change line 2 if(n==0) to if(n<=0), so that negative input
+    will not run in an error)
 
     Example c)
-    line 4: We calculate functionC(n-1) recursively two times.
-    Better:
-    Either just calculate it once, store this value in a variable and use this
-    variable twice.
-    Another strategy would be to use dynamic programming (which even prevents
-    repeated functionC(n-2) calls). This solution might need more storage space,
-    but that way we only need to calculate each functionC(k) once instead of three
-    times, and look this value up in subsequent calls.
+    1. line 2: the end case if(n == 0) can just be reached for input 0, otherwise
+       the execution of functionC leads to a stack overflow
+       Correction:
+       Change if(n == 0) to if(n <= 0)
+    2. line 4: We calculate functionC(n-1) recursively two times.
+       Better:
+       i) Just calculate it once, store this value in a variable and use this
+       variable twice.
+       ii) Just write: 2*functionC(n-1) + functionC(n-2);
+       iii) Another strategy would be to use dynamic programming (which even prevents
+       repeated functionC(n-2) calls). This solution might need more storage space,
+       but that way we only need to calculate each functionC(k) once instead of two
+       or three times, and look this value up in subsequent calls.
 
 
 
