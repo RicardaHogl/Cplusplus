@@ -56,15 +56,9 @@ a) Listing 1
        Change if(n == 0) to if(n <= 0)
     2. line 4: We calculate functionC(n-1) recursively two times.
        Better:
-       i) Just calculate it once, store this value in a variable and use this
+       Calculate functionC(n-1) once, store this value in a variable and use this
        variable twice.
-       ii) Just write: 2*functionC(n-1) + functionC(n-2);
-       iii) Another strategy would be to use dynamic programming (which even prevents
-       repeated functionC(n-2) calls). This solution might need more storage space,
-       but that way we only need to calculate each functionC(k) once instead of two
-       or three times, and look this value up in subsequent calls.
-
-
+       Or just write: 2*functionC(n-1) + functionC(n-2);
 
 
 # 4.3 (Real world objects)
