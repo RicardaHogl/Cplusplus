@@ -1,0 +1,27 @@
+# 4.1 Recursion vs. Iteration
+
+a) Listing 1
+
+(i) What would happen if the depth of recursion were not constrained? Will line 11 ever be reached?
+    Answ.: Line 11 will never be reached because since there is no termination condition
+    for the endless stack, so the program runs in an endless loop (if there would not be an
+    break up through an error).
+
+(ii) Compile and run the program. How many times will endless() be executed? Write down
+     your result!
+     Answ.: endless() will be executed n = 262040 times, than the program runs in an
+     segmentation fault, because ...
+
+(iii) Add the line
+      har memoryOnStack [1000];
+      before the return statement in endless and execute the program. What has changed?
+      Answ.:
+      The program overflow the stack much faster since we need to allocate
+      a new 1000-byte-Array in every call. Now endless() will be executed only
+      n = 7940 times until the segmentation fault occur.
+
+(iv) Delete the newly inserted line again and run the program a second time. Do you get the same
+     result as before?
+     Answ.:
+     As in (ii), endless() was executes  n = 262040 times, so we have the same result as before.
+     Because ...
