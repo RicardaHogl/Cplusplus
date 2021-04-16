@@ -4,7 +4,7 @@ using namespace std;
 Mammal::Mammal()
 {
     d_hairLength = 0;
-    cout << "Mammal base constructor" << endl;  //typeid(*this).name()
+    cout << "Mammal base constructor" << endl;
 }
 
 Mammal::Mammal(unsigned short _age, double _hairLength)
